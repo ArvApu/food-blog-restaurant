@@ -16,7 +16,7 @@ class CreateListingsTable extends Migration
         Schema::create('listings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->double('description');
+            $table->text('description');
             $table->double('price');
             $table->timestamps();
         });
