@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="content-wrapper">
 
         {{ $recipe->name }}
 

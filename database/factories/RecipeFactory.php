@@ -11,5 +11,8 @@ $factory->define(Recipe::class, function (Faker $faker) {
         'description' => $faker->realText(50),
         'products' => $faker->realText(50),
         'recipe' => $faker->realText(50),
+        'user_id' => function () {
+            return App\Models\User::inRandomOrder()->first()->id;
+        }
     ];
 });

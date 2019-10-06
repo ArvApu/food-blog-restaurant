@@ -1,11 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        @foreach($recipes as $recipe)
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <div>{{ $recipe->name }}</div>
-            </li>
-        @endforeach
+<div class="content-wrapper">
+
+    @foreach($recipes as $recipe)
+      <div class="card">
+
+        <img src="https://robohash.org/{{ $recipe->name }}.png" alt="Avatar" class='card-image'>
+
+        <div class="card-container">
+          <h4><b>{{ $recipe->name }}</b></h4>
+          <p>{{ $recipe->user->username }}</p>
+          <p>{{ $recipe->created_at }}</p>
+          <p><a href="{{ route('recipes.show', $recipe->id) }}">More</a></p>
+        </div>
+
+      </div>
+    @endforeach
+    <div class="paginator-container">
+        {{ $recipes->links() }}
     </div>
+   
+  </div>
 @endsection
