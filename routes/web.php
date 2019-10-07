@@ -17,3 +17,4 @@ Route::get('/', function () {
 
 Route::resource('recipes','RecipeController');
 
+Route::resource('contacts', 'ContactController', ['except' => ['show']]);
