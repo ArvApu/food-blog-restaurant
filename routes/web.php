@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::resource('recipes','RecipeController');
 
 Route::resource('contacts', 'ContactController', ['except' => ['show']]);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

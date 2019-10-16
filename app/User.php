@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -50,5 +50,10 @@ class User extends Authenticatable
     public function recipies()
     {
         return $this->hasMany(Recipe::class);
+    }
+
+    public function isAdmin()
+    {
+        return dd($this->roles());
     }
 }

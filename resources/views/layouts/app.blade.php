@@ -46,9 +46,18 @@
         <div class="dropdown">
             <button class="dropbtn"><i class="fas fa-bars"></i></button>
             <div class="dropdown-content">
-                <a href="./login.html"><i class="fas fa-sign-in-alt"></i>Sign in</a>
-                <a href="./register.html"><i class="fas fa-user-plus"></i>Register</a>
-                <a href="#"><i class="fas fa-sign-out-alt"></i>Sign out</a>
+                @if(Auth::guest())
+                <a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i>Sign in</a>
+                <a href="{{ route('register') }}"><i class="fas fa-user-plus"></i>Register</a>
+                @endif
+                @if(!Auth::guest())
+                <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i>Sign out</a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                @endif
             </div>
         </div>
         </div>
