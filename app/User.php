@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\UserRole;
+use App\Role;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -55,5 +57,18 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return dd($this->roles());
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function($user) {
+            $role = Role::where('name','=','User')->pluck('id')->first();
+            UserRole::create([
+                'user_id' => $user->id,
+                'role_id' => $role
+            ]);
+        });
     }
 }
