@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Recipe;
 use Exception;
 use Illuminate\Http\Request;
@@ -60,8 +61,10 @@ class RecipeController extends Controller
      */
     public function show(Recipe $recipe)
     {
+
         return view('recipe.show', [
             'recipe' => $recipe,
+            'comments' => $recipe->comments()->get(),
         ]);
     }
 
