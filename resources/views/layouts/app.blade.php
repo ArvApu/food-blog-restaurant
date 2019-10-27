@@ -9,9 +9,6 @@
 
     <title> @yield('title', 'Blog restaurant') </title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/main.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -76,3 +73,5 @@
     </div>
 </body>
 </html>
+<!-- Scripts -->
+<script src="{{ asset('js/main.js') }}" defer></script>
