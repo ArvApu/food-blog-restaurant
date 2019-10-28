@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 class ContactController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index']);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -26,7 +36,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        return view('contact.create');
     }
 
     /**
@@ -37,7 +47,17 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $this->validate($request,[
+            'address' => ['required','string'],
+            'longitude' => ['required','numeric'],
+            'latitude'=> ['required','numeric'],
+            'manager' => ['required','string'],
+            'email' => ['required','email'],
+            'phone_number' => ['required','string'],
+        ]);
+
+        Contact::create($data);
+        return redirect()->back();
     }
 
     /**

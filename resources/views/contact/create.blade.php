@@ -10,36 +10,45 @@
 
         <div class="card">
 
-            <h5 class="card-header bg-card-header text-center py-4">
-                <strong>Add new rental spot</strong>
+            <h5 class="">
+                <strong>Add new contact information</strong>
             </h5>
 
-            <form action="{{ route('recipes.store') }}" method="post">
+            <form action="{{ route('contacts.store') }}" method="post">
                 @csrf
-
                 <div class="form-group">
                     <div class="form-entry">
-                        <label for="name">Recipe name</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" id="address" value="{{ old('address') }}">
                     </div>
 
                     <div class="form-entry">
-                        <label for="tool_number">Description</label>
-                        <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="address">{{ old('description') }}</textarea>
+                        <label for="longitude">Longitude</label>
+                        <input type="number" class="form-control @error('longitude') is-invalid @enderror" name="longitude" id="longitude" value="{{ old('longitude') }}">
                     </div>
 
                     <div class="form-entry">
-                        <label for="tool_number">Products</label>
-                        <textarea class="form-control @error('products') is-invalid @enderror"  name="products" id="address">{{ old('products') }}</textarea>
+                        <label for="latitude">Latitude</label>
+                        <input type="number" class="form-control @error('latitude') is-invalid @enderror"  name="latitude" id="latitude" value="{{ old('latitude') }}">
                     </div>
 
                     <div class="form-entry">
-                        <label for="tool_number">Recipe</label>
-                        <textarea class="form-control @error('recipe') is-invalid @enderror" name="recipe" id="address">{{ old('recipe') }}</textarea>
+                        <label for="manager">Manager</label>
+                        <input type="text" class="form-control @error('manager') is-invalid @enderror" name="manager" id="manager" value="{{ old('manager') }}">
                     </div>
 
                     <div class="form-entry">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}">
+                    </div>
+
+                    <div class="form-entry">
+                        <label for="phone_number">Phone number</label>
+                        <input type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" id="phone_number" value="{{ old('phone_number') }}">
+                    </div>
+
+                    <div class="form-entry">
+                        <button type="submit" class="btn btn-success">Submit</button>
                     </div>
                 </div>
             </form>

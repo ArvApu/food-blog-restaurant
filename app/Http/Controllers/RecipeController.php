@@ -7,6 +7,7 @@ use App\Recipe;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class RecipeController extends Controller
 {
@@ -29,9 +30,7 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        return view('recipe.create', [
-            'user' => 'userio kuris db kuria id',
-        ]);
+        return view('recipe.create');
     }
 
     /**
@@ -48,7 +47,7 @@ class RecipeController extends Controller
             'products' => ['required', 'string'],
             'recipe' => ['required', 'string'],
         ]);
-        $recipe = Recipe::create($attributes);
+        Recipe::create($attributes + ['user_id' => Auth::id()]);
 
         return redirect('/');
     }

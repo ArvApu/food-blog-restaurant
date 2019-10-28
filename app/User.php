@@ -56,7 +56,7 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return dd($this->roles());
+        return in_array(1, $this->roles()->pluck('role_id')->all());
     }
 
     protected static function boot()

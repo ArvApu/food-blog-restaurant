@@ -5,6 +5,14 @@
         var contacts = {!! json_encode($contacts) !!};
     </script>
     <div class="content-wrapper">
+        @auth
+            @if (auth()->user()->isAdmin())
+            <div class="creation-button-wrapper">
+                <button class="btn btn-add full-width" onclick="location.href='{{ route('contacts.create') }}';">Add new contact</button>
+            </div>
+            @endif
+        @endauth
+
         @foreach($contacts as $contact)
         <div id="contacts">
 
