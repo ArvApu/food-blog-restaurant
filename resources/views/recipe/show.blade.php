@@ -23,13 +23,14 @@
         </div>
 
         @auth
-{{--            {{ route('comments.create', $recipe->id) }}--}}
-        <form action="/" method="post" id="comment-form">
+
+
+        <form action="{{ route('comments.store') }}" method="post" id="comment-form">
             @csrf
-            @method('PUT')
             <h2>Comment</h2>
+            <input name="recipe_id" type="hidden" value="{{$recipe->id}}">
             <textarea name="comment" id="comment"></textarea>
-            <input type="button" class="btn btn-success" id="leave-comment" value="Leave a comment">
+            <input type="submit" class="btn btn-success" id="leave-comment" value="Leave a comment">
         </form>
         @endauth
 

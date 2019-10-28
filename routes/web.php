@@ -11,14 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('recipes','RecipeController');
+Route::resource('/recipes','RecipeController');
 
-Route::resource('contacts', 'ContactController', ['except' => ['show']]);
+Route::resource('/contacts', 'ContactController', ['except' => ['show']]);
+
+Route::resource('/comments', 'CommentController', ['only' => ['store','update','destroy']]);
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
