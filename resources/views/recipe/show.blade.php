@@ -6,8 +6,8 @@
     <div class="content-wrapper centering">
 
         <div class="show-recipe">
-            <div class="recipe-img">
-                <img class="my-img" src="{{ url($recipe->getPathToImage()) }}" alt="food-pic">
+            <div class="recipe-img-container">
+                <img class="recipe-img" src="{{ url($recipe->getPathToImage()) }}" alt="food-pic">
             </div>
 
             <div class="recipe-data">

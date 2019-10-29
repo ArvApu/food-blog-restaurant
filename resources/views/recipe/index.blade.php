@@ -6,7 +6,7 @@
     @foreach($recipes as $recipe)
       <div class="card">
 
-        <img src="https://robohash.org/{{ $recipe->name }}.png" alt="Avatar" class='card-image'>
+        <img src="{{ url($recipe->getPathToImage()) }}" alt="food-pic" class='card-image'>
 
         <div class="card-container">
           <h4><b>{{ $recipe->name }}</b></h4>
@@ -20,6 +20,6 @@
     <div class="paginator-container">
         {{ $recipes->links() }}
     </div>
-   
+
   </div>
 @endsection

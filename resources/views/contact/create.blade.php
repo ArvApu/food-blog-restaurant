@@ -24,12 +24,12 @@
 
                     <div class="form-entry">
                         <label for="longitude">Longitude</label>
-                        <input type="number" class="form-control @error('longitude') is-invalid @enderror" name="longitude" id="longitude" value="{{ old('longitude') }}">
+                        <input type="text" class="form-control @error('longitude') is-invalid @enderror" name="longitude" id="longitude" value="{{ old('longitude') }}">
                     </div>
 
                     <div class="form-entry">
                         <label for="latitude">Latitude</label>
-                        <input type="number" class="form-control @error('latitude') is-invalid @enderror"  name="latitude" id="latitude" value="{{ old('latitude') }}">
+                        <input type="text" class="form-control @error('latitude') is-invalid @enderror"  name="latitude" id="latitude" value="{{ old('latitude') }}">
                     </div>
 
                     <div class="form-entry">

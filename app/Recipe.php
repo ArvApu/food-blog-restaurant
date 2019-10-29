@@ -38,7 +38,7 @@ class Recipe extends Model
     public function getPathToImage()
     {
         $root = '/storage/pictures/';
-        return isset($this->picture) ? $root.$this->picture : 'picture';
+        return isset($this->picture) ? $root.$this->picture : '/food.svg';
     }
 
 }
