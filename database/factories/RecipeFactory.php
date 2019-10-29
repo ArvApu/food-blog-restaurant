@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\Recipe;
+use App\Recipe;
 use Faker\Generator as Faker;
 
 $factory->define(Recipe::class, function (Faker $faker) {
@@ -12,7 +12,7 @@ $factory->define(Recipe::class, function (Faker $faker) {
         'products' => $faker->realText(50),
         'recipe' => $faker->realText(50),
         'user_id' => function () {
-            return App\Models\User::inRandomOrder()->first()->id;
+            return App\User::inRandomOrder()->first()->id;
         }
     ];
 });

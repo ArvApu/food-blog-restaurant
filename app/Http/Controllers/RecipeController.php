@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
 use App\Recipe;
 use Exception;
 use Illuminate\Http\Request;
@@ -11,6 +10,16 @@ use Illuminate\Support\Facades\Auth;
 
 class RecipeController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -46,8 +55,11 @@ class RecipeController extends Controller
             'description' => ['required', 'string'],
             'products' => ['required', 'string'],
             'recipe' => ['required', 'string'],
+            'picture' => ['sometimes','max:10000', 'image']
         ]);
-        Recipe::create($attributes + ['user_id' => Auth::id()]);
+
+        $recipe = Recipe::create($attributes + ['user_id' => Auth::id()]);
+        $recipe->addImage($request);
 
         return redirect('/');
     }
@@ -60,7 +72,6 @@ class RecipeController extends Controller
      */
     public function show(Recipe $recipe)
     {
-
         return view('recipe.show', [
             'recipe' => $recipe,
             'comments' => $recipe->comments()->get(),

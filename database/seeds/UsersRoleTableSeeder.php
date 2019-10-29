@@ -11,8 +11,8 @@ class UsersRoleTableSeeder extends Seeder
      */
     public function run()
     {
-        $roles = App\Models\Role::all();
-        $users = App\Models\User::where('id','!=','1')->get();
+        $roles = App\Role::all();
+        $users = App\User::where('id','!=','1')->get();
 
         // Populate the pivot table
         foreach ($users as $user) {

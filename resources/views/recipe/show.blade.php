@@ -7,7 +7,7 @@
 
         <div class="show-recipe">
             <div class="recipe-img">
-
+                <img class="my-img" src="{{ url($recipe->getPathToImage()) }}" alt="food-pic">
             </div>
 
             <div class="recipe-data">

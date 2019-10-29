@@ -14,7 +14,7 @@
                 <strong>Add new rental spot</strong>
             </h5>
 
-            <form action="{{ route('recipes.store') }}" method="post">
+            <form action="{{ route('recipes.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-group">
@@ -24,22 +24,27 @@
                     </div>
 
                     <div class="form-entry">
-                        <label for="tool_number">Description</label>
-                        <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="address">{{ old('description') }}</textarea>
+                        <label for="description">Description</label>
+                        <input type="text" class="form-control @error('description') is-invalid @enderror" name="description" id="description" value=""{{ old('description') }}>
                     </div>
 
                     <div class="form-entry">
-                        <label for="tool_number">Products</label>
-                        <textarea class="form-control @error('products') is-invalid @enderror"  name="products" id="address">{{ old('products') }}</textarea>
+                        <label for="products">Products</label>
+                        <input type="text" class="form-control @error('products') is-invalid @enderror"  name="products" id="products" value=""{{ old('products') }}>
                     </div>
 
                     <div class="form-entry">
-                        <label for="tool_number">Recipe</label>
-                        <textarea class="form-control @error('recipe') is-invalid @enderror" name="recipe" id="address">{{ old('recipe') }}</textarea>
+                        <label for="recipe">Recipe</label>
+                        <textarea class="form-control @error('recipe') is-invalid @enderror" name="recipe" id="recipe">{{ old('recipe') }}</textarea>
                     </div>
 
                     <div class="form-entry">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <label for="picture">Recipe</label>
+                        <input type="file" class="form-control @error('recipe') is-invalid @enderror" name="picture" id="picture" value=""{{ old('recipe') }}>
+                    </div>
+
+                    <div class="form-entry">
+                        <button type="submit" class="btn btn-success">Submit</button>
                     </div>
                 </div>
             </form>
