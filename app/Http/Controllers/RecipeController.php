@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Recipe;
 use Exception;
 use Illuminate\Http\Request;
@@ -72,9 +73,10 @@ class RecipeController extends Controller
      */
     public function show(Recipe $recipe)
     {
+//        dd(Comment::with('users')->get());
         return view('recipe.show', [
             'recipe' => $recipe,
-            'comments' => $recipe->comments()->get(),
+            'comments' => $recipe->comments()->with('user')->get(),
         ]);
     }
 

@@ -34,13 +34,21 @@
         </form>
         @endauth
 
-        <div class="comments">
-            @foreach($comments as $comment)
-                {{$comment->text}} <br>
-                {{$comment->user_id}} <br>
-                {{$comment->created_at}} <br>
-            @endforeach
-        </div>
+        @if (!$comments->isEmpty())
+            <div class="comments">
+                @foreach($comments as $comment)
+                    <div class="left-comment">
+                        <h3>{{$comment->user->username}}</h3>
+                        {{$comment->text}}
+                        <small>{{$comment->created_at}} </small>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <div class="comments" id="no-comments">
+                <h1>(ಥ﹏ಥ) No comments. ¯\_(ツ)_/¯</h1>
+            </div>
+        @endif
 
     </div>
     <!-- /.container -->

@@ -10,13 +10,13 @@ class Comment extends Model
         'text','user_id', 'recipe_id'
     ];
 
-    public function users()
+    public function user()
     {
-        return$this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function recipes()
     {
-        return$this->belongsTo(Recipe::class);
+        return $this->belongsTo(Recipe::class, 'recipe_id');
     }
 }
