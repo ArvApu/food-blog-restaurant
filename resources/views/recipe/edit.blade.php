@@ -1,18 +1,14 @@
 @extends('layouts.app')
 
-@section('title','recipe')
+@section('title','Edit recipe')
 
 @section('content')
-
-    <div class="container">
-
+    <div class="form-container">
         @include('errors')
 
-        <div class="card">
-
-            <h5 class="card-header bg-card-header text-center py-4">
-                <strong>Add new rental spot</strong>
-            </h5>
+            <h1>
+                <strong>Edit recipe</strong>
+            </h1>
 
             <form action="{{ route('recipes.update', $recipe->id) }} " method="post">
                 @csrf
@@ -21,30 +17,34 @@
                 <div class="form-group">
                     <div class="form-entry">
                         <label for="name">Recipe name</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ $recipe->name }}">
+                        <input type="text" class="form-control" name="name" id="name" value="{{ $recipe->name }}">
                     </div>
 
                     <div class="form-entry">
-                        <label for="tool_number">Description</label>
-                        <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="address">{{ $recipe->description }}</textarea>
+                        <label for="description">Description</label>
+                        <textarea type="text" class="form-control" name="description" id="description" >{{ $recipe->description }}</textarea>
                     </div>
 
                     <div class="form-entry">
-                        <label for="tool_number">Products</label>
-                        <textarea class="form-control @error('products') is-invalid @enderror"  name="products" id="address">{{ $recipe->products }}</textarea>
+                        <label for="products">Products</label>
+                        <textarea type="text" class="form-control"  name="products" id="products" >{{ $recipe->products }}</textarea>
                     </div>
 
                     <div class="form-entry">
-                        <label for="tool_number">Recipe</label>
-                        <textarea class="form-control @error('recipe') is-invalid @enderror" name="recipe" id="address">{{ $recipe->recipe }}</textarea>
+                        <label for="recipe">Recipe</label>
+                        <textarea class="form-control" name="recipe" id="recipe">{{ $recipe->recipe }}</textarea>
                     </div>
 
                     <div class="form-entry">
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <label for="picture">Recipe</label>
+                        <input type="file" class="form-control" name="picture" id="picture">
+                    </div>
+
+                    <div class="form-entry">
+                        <button type="submit" class="btn btn-success">Submit</button>
                     </div>
                 </div>
             </form>
         </div>
-    </div>
-
+</div>
 @endsection

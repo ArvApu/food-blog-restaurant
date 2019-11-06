@@ -44,16 +44,16 @@
             <button class="dropbtn"><i class="fas fa-bars"></i></button>
             <div class="dropdown-content">
                 @if(Auth::guest())
-                <a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i>Sign in</a>
-                <a href="{{ route('register') }}"><i class="fas fa-user-plus"></i>Register</a>
+                    <a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i>Sign in</a>
+                    <a href="{{ route('register') }}"><i class="fas fa-user-plus"></i>Register</a>
                 @endif
                 @if(!Auth::guest())
-                <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i>Sign out</a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
+                    <a href="{{ route('recipes.create') }}"><i class="fas fa-plus"></i>New recipe</a>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i>Sign out</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 @endif
             </div>
         </div>

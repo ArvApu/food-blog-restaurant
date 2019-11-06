@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
 use App\Recipe;
 use Exception;
 use Illuminate\Http\Request;
@@ -62,7 +61,7 @@ class RecipeController extends Controller
         $recipe = Recipe::create($attributes + ['user_id' => Auth::id()]);
         $recipe->addImage($request);
 
-        return redirect('/');
+        return redirect('/recipes');
     }
 
     /**
@@ -73,7 +72,6 @@ class RecipeController extends Controller
      */
     public function show(Recipe $recipe)
     {
-//        dd(Comment::with('users')->get());
         return view('recipe.show', [
             'recipe' => $recipe,
             'comments' => $recipe->comments()->with('user')->get(),
