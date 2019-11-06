@@ -11,20 +11,21 @@
             </div>
 
             <div class="recipe-data">
-                <h1>{{$recipe->name}}</h1>
-                <p>{{$recipe->description}}</p>
-                <p>{{$recipe->products}}</p>
-                <p>{{$recipe->recipe}}</p>
-                <p>{{$recipe->user->username}}</p>
-                <p>{{$recipe->created_at}}</p>
-                <p></p>
+                <div>
+                    <h1>{{$recipe->name}}</h1>
+                    <p class="recipe-box">{{$recipe->description}}</p>
+                    <p class="recipe-box">{{$recipe->products}}</p>
+                    <p class="recipe-box">{{$recipe->recipe}}</p>
+                </div>
+                <div class="recipe-box-meta">
+                    <p> <b>Author: </b>{{$recipe->user->username}}</p>
+                    <p style="font-style: oblique">{{$recipe->created_at}}</p>
+                </div>
             </div>
 
         </div>
 
         @auth
-
-
         <form action="{{ route('comments.store') }}" method="post" id="comment-form">
             @csrf
             <h2>Comment</h2>

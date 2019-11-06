@@ -58,18 +58,21 @@ class ContactController extends Controller
         ]);
 
         Contact::create($data);
-        return redirect()->back();
+        return redirect('/contacts');
     }
 
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Contact  $contact
+     * @param \App\Contact $contact
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(Contact $contact)
     {
-
+        if(auth()->user()->isAdmin())
+            $contact->delete();
+        return redirect('/contacts')->with('success', 'Contact was deleted');
     }
 }

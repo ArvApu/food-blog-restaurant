@@ -5,6 +5,7 @@
         var contacts = {!! json_encode($contacts) !!};
     </script>
     <div class="content-wrapper">
+        @include('success')
         @auth
             @if (auth()->user()->isAdmin())
             <div class="creation-button-wrapper">
@@ -31,6 +32,18 @@
                 <p>
                     Phone number: <span class="contacts-meta-info">{{$contact->phone_number}}</span>
                 </p>
+                @auth
+                    @if (auth()->user()->isAdmin())
+                        <p>
+                            <button class="btn btn-danger" onclick="document.getElementById('delete-{{$contact->id}}').submit();">Delete</button>
+                            <form id="delete-{{$contact->id}}" action="{{ route('contacts.destroy', $contact->id )}}" method="POST" style="display: none;">
+                                @csrf
+                                @method('DELETE')
+                            </form>
+                        </p>
+                    @endif
+                @endauth
+
             </div>
         </div>
         @endforeach
