@@ -49,9 +49,19 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
-    public function recipies()
+    public function recipes()
     {
         return $this->hasMany(Recipe::class);
+    }
+
+    public function ownerOfRecipe($id)
+    {
+        return in_array($id, $this->recipes()->pluck('id')->all()) || $this->isAdmin();
+    }
+
+    public function ownerOfComment($id)
+    {
+        return in_array($id, $this->comments()->pluck('id')->all()) || $this->isAdmin();
     }
 
     public function isAdmin()

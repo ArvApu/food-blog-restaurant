@@ -34,7 +34,7 @@
         </div>
 
         <div id="menu">
-            <a class="{{ Request::is('/') ? 'current-item' : '' }}" href="/">Home</a>
+            <a class="{{ Request::is('/') || Request::is('home')? 'current-item' : '' }}" href="/">Home</a>
             <a class="{{ Request::is('recipes') ? 'current-item' : '' }}" href="{{ route('recipes.index') }}">Recipes</a>
             <a class="{{ Request::is('contacts') ? 'current-item' : '' }}" href="{{ route('contacts.index') }}">Contact Us</a>
         </div>

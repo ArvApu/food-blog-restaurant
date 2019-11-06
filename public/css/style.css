@@ -223,12 +223,49 @@ input.noLastPassStyle {
     margin-bottom: 7px;
 }
 
+.comment-delete{
+    margin-left: 7px;
+    font-size: 13px;
+}
+
+.comment-delete:hover {
+    cursor: pointer;
+    color: #f66d9b;
+}
+
+.comment-edit{
+    margin-left: 7px;
+    font-size: 13px;
+}
+
+.comment-edit:hover {
+    cursor: pointer;
+    color: #38c172;
+}
+.comment-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.comment-link:visited {
+    color: inherit;
+}
+
+.r-l-box {
+
+    font-weight: bold;
+    color: #000000;
+}
+
+.r-l-box:hover {
+    color: #455d7a;
+}
+
 #no-comments {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 
 #wrapper {
     display: flex;

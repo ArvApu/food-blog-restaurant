@@ -39,7 +39,11 @@
             <div class="comments">
                 @foreach($comments as $comment)
                     <div class="left-comment">
-                        <h3>{{$comment->user->username}}</h3>
+                        <h3>{{$comment->user->username}}
+                            @auth @if(auth()->user()->ownerOfComment($comment->id))
+                                <i class="fas fa-trash-alt comment-delete"></i>
+                            @endif @endauth
+                        </h3>
                         {{$comment->text}}
                         <small>{{$comment->created_at}} </small>
                     </div>
