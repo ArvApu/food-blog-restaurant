@@ -41,12 +41,16 @@
                     <div class="left-comment">
                         <h3>{{$comment->user->username}}
                             @auth @if(auth()->user()->ownerOfComment($comment->id))
-                                <i class="fas fa-trash-alt comment-delete"></i>
+                                <i class="fas fa-trash-alt comment-delete" onclick="document.getElementById('delete-{{$comment->id}}').submit();"></i>
                             @endif @endauth
                         </h3>
                         {{$comment->text}}
                         <small>{{$comment->created_at}} </small>
                     </div>
+                    <form id="delete-{{$comment->id}}" action="{{ route('comments.destroy', $comment->id )}}" method="POST" style="display: none;">
+                        @csrf
+                        @method('DELETE')
+                    </form>
                 @endforeach
             </div>
         @else

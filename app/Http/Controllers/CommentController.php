@@ -34,11 +34,14 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Comment $comment
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function destroy(Recipe $recipe)
+    public function destroy(Comment $comment)
     {
-        dd($recipe);
+        if(auth()->user()->ownerOfComment($comment->d))
+            $comment->delete();
+        return redirect()->back();
     }
 }

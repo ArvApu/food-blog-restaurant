@@ -107,8 +107,9 @@ class RecipeController extends Controller
             'recipe' => ['required', 'string'],
         ]);
         $recipe->update($attributes);
+        $recipe->addImage($request);
 
-        return redirect('/');
+        return redirect('/recipes');
     }
 
     /**
@@ -120,7 +121,8 @@ class RecipeController extends Controller
      */
     public function destroy(Recipe $recipe)
     {
-        $recipe->delete();
-        return redirect('/');
+        if(auth()->user()->ownerOfRecipe($recipe->id))
+            $recipe->delete();
+        return redirect('/recipes');
     }
 }
